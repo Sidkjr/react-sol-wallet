@@ -14,7 +14,9 @@ const {
 
 const newPair = new Keypair();
 const publicKey = new PublicKey(newPair._keypair.publicKey).toString();
+const privateKey = newPair._keypair.secretKey;
 var walletBalance = 0;
+var walletBalanceSol = 0;
 
 const airDropSol = async () => {
     try {
@@ -25,7 +27,7 @@ const airDropSol = async () => {
             new PublicKey(publicKey),
             2 * LAMPORTS_PER_SOL
         );
-        await connection.confirmTransaction(fromAirDropSignature);
+        await connection.confirmTransaction({ signature: fromAirDropSignature});
     } catch (err) {
         console.log(err);
     }
@@ -36,11 +38,11 @@ const getWalBalance = async () => {
         const connection = new Connection(clusterApiUrl("testnet"), "confirmed");
         // console.log("Connection object is: ", connection);
 
-        walletBalance = await connection.getBalance(
-            new PublicKey(publicKey)
-        );
+        walletBalance = await connection.getBalance(new PublicKey(publicKey));
+        walletBalanceSol = parseInt(walletBalance) / LAMPORTS_PER_SOL
 
-        console.log(`Wallet balance: ${parseInt(walletBalance) / LAMPORTS_PER_SOL} SOL`);
+
+        console.log(`Wallet balance: ${walletBalanceSol} SOL`);
     } catch (err) {
         console.log(err);
     }
@@ -58,7 +60,7 @@ function KeyGenPage() {
     const navigate = useNavigate();
 
     const move_to_walletlink = () => {
-        navigate("/phantomwall");
+        navigate("/phantomwall", {state: {publicKey : publicKey, privateKey : privateKey}});
     }
     return(
         <Alert variant="success">
@@ -67,24 +69,21 @@ function KeyGenPage() {
             <p>
                 Your new wallet has been Generated and the wallet key is: 
             </p>
-            <p id="wallkey"></p>
+            <div className="content" dangerouslySetInnerHTML={{__html: publicKey}}></div>
             <br/>
             <p>
-                And we have also Airdropped some SOL, Here's the Balance: 
+                We have also Airdropped some SOL into your Wallet, The following is the private key ps:- Keep it Hidden:) 
             </p>
-            <p id="wallbal"></p>
+            <div className="content" dangerouslySetInnerHTML={{__html: privateKey}}></div>
             <br/>
-            <script>
-                document.getElementbyId("wallkey").innerHTML = publicKey;
-                document.getElementbyId("wallbal").innerHTML = walletBalance;
-            </script>
-            <hr />
+            <hr/>
             <div className="d-flex justify-content-end">
                 <Button onClick={move_to_walletlink} variant="outline-sucess">Next</Button>
             </div>
             
         </Alert>
     )
+    
 };
 
 export default KeyGenPage
