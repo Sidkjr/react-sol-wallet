@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import HomeMain from './pages/HomeMain';
+import WalletLink from './pages/WalletLink';
+import KeyGenPage from './pages/KeyGenPage';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -36,8 +38,12 @@ const router = createBrowserRouter([
     element: <HomeMain/>,
   },
   {
-    path: "/",
-    element: <div>Hello world!</div>,
+    path: "/phantomwall",
+    element: <WalletLink/>,
+  },
+  {
+    path: "/w-gen",
+    element: <KeyGenPage/>,
   },
 ]);
 
