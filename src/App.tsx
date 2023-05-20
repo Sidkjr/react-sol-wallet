@@ -4,6 +4,7 @@ import './App.css';
 import HomeMain from './pages/HomeMain';
 import WalletLink from './pages/WalletLink';
 import KeyGenPage from './pages/KeyGenPage';
+import TransactionPage from './pages/TransactionPage';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/phantomwall",
     element: <WalletLink/>,
+  },
+  {
+    path: "/transactionPage",
+    element: <TransactionPage/>,
   },
   {
     path: "/w-gen",
