@@ -2,9 +2,11 @@ import {
     PublicKey,
     Transaction,
 } from "@solana/web3.js";
+import '../App.css'
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+import  LogoofPhantom from "../files/LogoofPhantom.png"
 
 // create types
 type DisplayEncoding = "utf8" | "hex";
@@ -102,19 +104,39 @@ function WalletLink() {
     }
     
     return(
+      
         <div className="App">
           <header className="App-header">
-            <h2>Connect to a Phantom Wallet</h2>
+            <h2>Let's Connect To Phantom</h2>
           </header>
+          
           {provider && !walletKey && (
             <div className="d-grid gap-2">
-              <Button className="phantomConnect" onClick={connectWallet} variant="outline-sucess" size="lg">Connect wallet</Button>
+              <Button onClick={connectWallet} variant="outline-success" size="lg">Connect wallet</Button>
             </div>
           )}
           {provider && walletKey && (
             <div className="d-grid gap-2">
-              <Button className="sendSol" onClick={move_to_transact} variant="outline-sucess" size="lg"></Button>
+              <div className="App-body">
+                  <img
+                  src={LogoofPhantom}
+                  alt=""
+                  style={{
+                    height: '55px',
+                    width: '55px',
+                  }}></img>
+                  <h3>Phantom sucessfully Connected!</h3>
+              </div>
+              <Button onClick={move_to_transact} variant="outline-success" size="lg">Let's Transact</Button>
             </div>
+          )}
+          {!provider && (
+            <p>
+              It seems you don't have Phantom. Install{""}
+              <div className="d-grid gap-2">
+                <Button href="https://phantom.app/download" variant="outline-info" size="lg">Phantom Extension</Button>
+              </div>
+            </p>
           )}
         </div>
     )
