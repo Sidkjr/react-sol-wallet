@@ -12,7 +12,7 @@ function HomeMain() {
             <h1>
                 Welcome to the main Page, Let's create a Wallet
             </h1>
-            <Button onClick={move_to_keygen}>Generate</Button>
+            <Button onClick={move_to_keygen}>Generate Account</Button>
         </div>
             
     )
