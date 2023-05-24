@@ -1,5 +1,3 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import HomeMain from './pages/HomeMain';
 import WalletLink from './pages/WalletLink';
@@ -9,6 +7,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 
 // Functionality
 // Account
@@ -49,7 +48,7 @@ const router = createBrowserRouter([
   {
     path: "/w-gen",
     element: <KeyGenPage/>,
-  },
+  }
 ]);
 
 function App() {

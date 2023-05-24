@@ -82,6 +82,7 @@ function WalletLink() {
       try {
 				// connects wallet and returns response which includes the wallet public key
         const response = await solana.connect();
+        ;
         console.log('wallet account ', response.publicKey.toString());
 				// update walletKey to be the public key
         setWalletKey(response.publicKey.toString());
@@ -93,6 +94,7 @@ function WalletLink() {
     const location = useLocation();
     const private_key_genwall = location.state.privateKey;
     const public_key_genwall = location.state.publicKey;
+    const fromAirDropSignature = location.state.fromAirDropSignature;
 
     console.log(private_key_genwall);
     console.log(public_key_genwall);
@@ -100,7 +102,7 @@ function WalletLink() {
     const navigate = useNavigate();
 
     const move_to_transact = () => {
-        navigate("/transactionPage", {state: {publicKey : public_key_genwall, privateKey : private_key_genwall, walletKey : walletKey}});
+        navigate("/transactionPage", {state: {publicKey : public_key_genwall, privateKey : private_key_genwall, walletKey : walletKey, fromAirDropSignature : fromAirDropSignature}});
     }
     
     return(

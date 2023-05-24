@@ -1,8 +1,7 @@
-import React from "react";
 import { Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Alert } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 const {
     Connection,
@@ -17,15 +16,20 @@ const publicKey = new PublicKey(newPair._keypair.publicKey).toString();
 const privateKey = newPair._keypair.secretKey;
 var walletBalance = 0;
 var walletBalanceSol = 0;
+var fromAirDropSignature;
+
+const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+);
 
 const airDropSol = async () => {
     try {
         const connection = new Connection(clusterApiUrl("testnet"), "confirmed");
 
         console.log("Airdropping some SOL to my wallet!");
-        const fromAirDropSignature = await connection.requestAirdrop(
+        fromAirDropSignature = await connection.requestAirdrop(
             new PublicKey(publicKey),
-            2 * LAMPORTS_PER_SOL
+            1 * LAMPORTS_PER_SOL
         );
         await connection.confirmTransaction({ signature: fromAirDropSignature});
     } catch (err) {
@@ -39,7 +43,7 @@ const getWalBalance = async () => {
         // console.log("Connection object is: ", connection);
 
         walletBalance = await connection.getBalance(new PublicKey(publicKey));
-        walletBalanceSol = parseInt(walletBalance) / LAMPORTS_PER_SOL
+        walletBalanceSol = parseInt(walletBalance) / LAMPORTS_PER_SOL;
 
 
         console.log(`Wallet balance: ${walletBalanceSol} SOL`);
@@ -50,8 +54,11 @@ const getWalBalance = async () => {
 
 const warpFunction = async () => {
     await airDropSol();
+    await delay(10000);
+    await airDropSol();
+    await delay(10000);
+    await airDropSol();
     await getWalBalance();
-    
 };
 
 warpFunction();
@@ -60,7 +67,7 @@ function KeyGenPage() {
     const navigate = useNavigate();
 
     const move_to_walletlink = () => {
-        navigate("/phantomwall", {state: {publicKey : publicKey, privateKey : privateKey}});
+        navigate("/phantomwall", {state: {publicKey : publicKey, privateKey : privateKey, fromAirDropSignature : fromAirDropSignature}});
     }
     return(
         <Alert variant="success">
