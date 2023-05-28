@@ -1,46 +1,81 @@
-# Getting Started with Create React App
+# ReactWeb3App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The purpose of this Application is to understand and implement Wallet Generation, Airdrops, Node Providers and Transacting between wallets in SOLANA
+## Description
 
-## Available Scripts
+This project is created using the React.js Library the following additional Libraries are used -
+* ```react-router-dom```
+* ```react-bootstrap```
+* ```buffer```
+* ```@solana/web3.js```
 
-In the project directory, you can run:
+The application is a multi-paged application and the routing is done through ```<RouterProvider>``` Component.
+The working order of the application is as follows:
+1. ```Key generation and Airdrop```
+The KeygenPage will display the result like this.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![1684927139623](https://github.com/Sidkjr/metacrafters-solana-challenge3/assets/40859683/409ffc43-c3da-4235-8bfd-5c376df2717b)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+2. ```Connect to Phantom```
+There are 3 situations that one can face here
+  a. Phantom extension is not installed.
+  
+  
+  ![image](https://github.com/Sidkjr/metacrafters-solana-challenge3/assets/40859683/239e72bb-37f9-45b9-9118-56edca1b095c)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  b. Phantom is installed but wallet is not connected.
+  
+  
+  ![1684927140029](https://github.com/Sidkjr/metacrafters-solana-challenge3/assets/40859683/26a03696-cbad-4aa5-ab63-80b655593ee6)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+  c. Pantom wallet is successfully connected to the application.
+  
+  
+  ![1684927138505](https://github.com/Sidkjr/metacrafters-solana-challenge3/assets/40859683/01fedec3-cdbe-4c5f-af95-69b909a32c5b)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. ```Send SOL to Phantom```
+If you followed the instructions and the order of working properly, You will see this reciept.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![image](https://github.com/Sidkjr/metacrafters-solana-challenge3/assets/40859683/84ad120d-394f-4892-b4f1-2a995e5d469e)
 
-## Learn More
+And in the console, The transaction id will be printed out.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![image](https://github.com/Sidkjr/metacrafters-solana-challenge3/assets/40859683/94ccd0cc-d206-469d-bc32-d57be5381acd)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can later verify the Signature on the Solana Explorer Page. Like this.
+
+![1684927139504](https://github.com/Sidkjr/metacrafters-solana-challenge3/assets/40859683/5fef7e4d-9cd3-40d8-b107-ea831717d81a)
+
+
+
+## Getting Started
+
+### Installing
+
+* ```git clone``` this repo into a folder of your choice.
+* Go into the root folder of the project - ```metacrafters-solana-challenge3```
+* All done!
+
+### Executing program
+
+* Make sure that you are in the root diretory of the project
+* Into the terminal, enter:
+```
+npm start
+```
+* Your react application will be opened in another browser window
+
+## Authors
+
+Contributors names and contact info
+
+Siddhant Khare  
+(https://www.linkedin.com/in/siddhant-khare-13938920a/)
