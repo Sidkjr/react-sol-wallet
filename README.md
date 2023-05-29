@@ -64,6 +64,15 @@ You can later verify the Signature on the Solana Explorer Page. Like this.
 * Go into the root folder of the project - ```metacrafters-solana-challenge3```
 * All done!
 
+### Installing the libraries
+* Make Sure you have Node.js and npm installed in your local system. Visit https://nodejs.org/en/download to get Node
+* Check if npm is installed properly using ```npm --version```
+* Type the following commands into the terminal after going into the root folder.
+  - ```npm install react-router-dom```
+  - ```npm install react-bootstrap```
+  - ```npm install buffer```
+  - ```npm install @solana/web3.js```
+
 ### Executing program
 
 * Make sure that you are in the root diretory of the project
